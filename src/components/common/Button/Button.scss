@@ -1,0 +1,21 @@
+.button {
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 32px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: white;
+  padding: 0 20px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+
+  &.button-primary {
+    background-color: #3ac4a3;
+  }
+
+  &.button-danger {
+    background-color: #e9563e;
+  }
+}

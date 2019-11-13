@@ -1,0 +1,49 @@
+body, * {
+  font-family: 'Roboto', sans-serif;
+}
+
+.App {
+  margin: 90px auto 0;
+  min-width: 458px;
+  width: 550px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+hr {
+  border-top: 1px solid #d9d9d9;
+}
+
+.tooltips-container {
+  h3.section-header,
+  p.sub-header-text {
+    font-weight: 300;
+    text-align: center;
+    margin: 10px 0 0;
+    color: rgba(0,0,0,.87);
+  }
+
+  p.sub-header-text {
+    font-size: 14px;
+    line-height: 1.42;
+  }
+  
+  >.flex-row {
+    margin-top: 140px;
+  }
+
+  >.flex-row:last-of-type {
+    margin-bottom: 140px;
+  }
+
+  .tooltip-button:not(:first-of-type) {
+    margin-left: 20px;
+  }
+}

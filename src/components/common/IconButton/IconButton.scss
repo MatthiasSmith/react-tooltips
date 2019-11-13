@@ -1,0 +1,27 @@
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b2b2b2;
+  height: 26px;
+  min-width: 81px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: #ea553d;
+  }
+
+  .fas {
+    font-size: 21px;
+  }
+
+  .button-text {
+    font-size: 14px;
+    font-weight: 300;
+    margin-left: 4px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+}
