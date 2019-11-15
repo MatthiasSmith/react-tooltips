@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../Button/Button';
 
 const styles = {
-  minWidth: 213
+  minWidth: 219
 };
 
 const marginLeftStyle = {

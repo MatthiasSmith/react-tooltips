@@ -22,7 +22,7 @@ export class TooltipButton extends React.Component {
   setupEvents() {
     this.createButton = this.createButton.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.handleOnFocus = this.handleOnFocus.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.handleOnMouseOver = this.handleOnMouseOver.bind(this);
     this.handleOnMouseOut = this.handleOnMouseOut.bind(this);
   }
@@ -33,7 +33,7 @@ export class TooltipButton extends React.Component {
     }
   }
 
-  handleOnFocus(e) {
+  handleOnClick(e) {
     const targetEl = e.currentTarget;
     if (targetEl && !this.tooltip.current.state.visible) {
       const rect = targetEl.getBoundingClientRect();
@@ -61,14 +61,13 @@ export class TooltipButton extends React.Component {
   }
 
   createButton(text) {
-    const { handleOnFocus, handleOnMouseOver, handleOnMouseOut } = this;
+    const { handleOnClick, handleOnMouseOver, handleOnMouseOut } = this;
 
     return (
       <Button
         id={this.props.id}
         text={text}
-        onClick={this.props.onClick}
-        onFocus={handleOnFocus}
+        onClick={handleOnClick}
         onMouseOver={handleOnMouseOver}
         onMouseOut={handleOnMouseOut}
       />
@@ -81,8 +80,8 @@ export class TooltipButton extends React.Component {
 
   render() {
     return (
-      <div className="tooltip-button" ref={this.setWrapperRef}>
-        <div className="flex-row space-between">{this.createButton()}</div>
+      <div className="tooltip-button" ref={this.setWrapperRef} role="button">
+        <div>{this.createButton()}</div>
         <Tooltip
           ref={this.tooltip}
           showOn={this.props.showOn}
