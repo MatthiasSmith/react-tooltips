@@ -6,16 +6,13 @@ import './Tooltip.scss';
 const PUSH_FROM_TARGET_PIXELS = 22;
 
 export class Tooltip extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-      x: 0,
-      y: 0,
-      direction: 'top',
-      arrowPosition: 'center'
-    };
-  }
+  state = {
+    visible: false,
+    x: 0,
+    y: 0,
+    direction: 'top',
+    arrowPosition: 'center'
+  };
 
   setArrowPosition(forcePosition) {
     if (forcePosition.indexOf('left') > -1) {
@@ -39,12 +36,22 @@ export class Tooltip extends React.Component {
 
   hide() {
     this.setState({ visible: false });
+    if (this.props.detach) {
+      const tooltipNode = ReactDOM.findDOMNode(this);
+      tooltipNode.remove();
+    }
   }
 
   positionTooltip(targetRect) {
-    let tooltipNode = ReactDOM.findDOMNode(this);
+    const tooltipNode = ReactDOM.findDOMNode(this);
 
     if (tooltipNode) {
+      if (this.props.detach) {
+        tooltipNode.remove();
+        const rootEl = document.getElementById('root');
+        rootEl.parentNode.insertBefore(tooltipNode, rootEl);
+      }
+
       let x = 0;
       let y = 0;
 
@@ -60,10 +67,15 @@ export class Tooltip extends React.Component {
 
       const forcePosition = this.props.forcePosition || '';
       let showAbove =
-        topY - tooltipRect.height >= 0 || forcePosition.indexOf('top') > -1;
+        (topY - tooltipRect.height >= 0
+          && leftX >= 0
+          && rightX <= docWidth)
+        || forcePosition.indexOf('top') > -1;
       let showBelow =
-        bottomY + tooltipRect.height <= window.scrollY + docHeight ||
-        forcePosition.indexOf('bottom') > -1;
+        (bottomY + tooltipRect.height <= window.scrollY + docHeight
+          && leftX >= 0
+          && rightX <= docWidth)
+        || forcePosition.indexOf('bottom') > -1;
 
       let showRight =
         rightX + tooltipRect.width <= window.scrollX + docWidth ||
@@ -72,12 +84,14 @@ export class Tooltip extends React.Component {
         leftX - tooltipRect.width >= 0 || forcePosition.indexOf('left') > -1;
 
       // make sure forcePositions override other positionings
-      showAbove = !(
-        forcePosition === 'right' ||
-        (forcePosition === 'left' || forcePosition.indexOf('bottom') > -1)
-      );
-      showBelow = !(forcePosition === 'right' || forcePosition === 'left');
-      showRight = !(forcePosition === 'left');
+      if (forcePosition.length > 0) {
+        showAbove = !(
+          forcePosition === 'right' ||
+          (forcePosition === 'left' || forcePosition.indexOf('bottom') > -1)
+        );
+        showBelow = !(forcePosition === 'right' || forcePosition === 'left');
+        showRight = !(forcePosition === 'left');
+      }
 
       let newState = {};
 
@@ -164,13 +178,13 @@ export class Tooltip extends React.Component {
       <div
         className={`tooltip ${this.state.direction} ${isVisible} content-type-${
           this.props.contentType
-        }`}
+          }`}
         style={style}
         onClick={this.props.onClick}>
         <div
           className={`tooltip-content-container content-type-${
             this.props.contentType
-          }`}>
+            }`}>
           <div className="tooltip-content">{this.props.children}</div>
         </div>
         <svg

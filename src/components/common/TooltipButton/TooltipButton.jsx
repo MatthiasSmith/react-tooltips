@@ -81,12 +81,14 @@ export class TooltipButton extends React.Component {
   render() {
     return (
       <div className="tooltip-button" ref={this.setWrapperRef} role="button">
-        <div>{this.createButton()}</div>
+        <div>{this.createButton(this.props.buttonText)}</div>
         <Tooltip
           ref={this.tooltip}
           showOn={this.props.showOn}
           contentType={this.props.contentType}
-          forcePosition={this.props.forcePosition}>
+          forcePosition={this.props.forcePosition}
+          detach={this.props.detach}
+        >
           {this.props.children}
         </Tooltip>
       </div>

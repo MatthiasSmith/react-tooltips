@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TooltipButton } from '../../common/TooltipButton/TooltipButton';
+import { TooltipButton } from './common/TooltipButton/TooltipButton';
 
 export const TooltipsSection = ({ sectionTitle, subTitle, contentType, showOn, children }) => (
   <section className="tooltips-container">
