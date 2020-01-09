@@ -83,7 +83,7 @@ export class Tooltip extends React.Component {
       const showLeft =
         leftX - tooltipRect.width >= 0 || forcePosition.indexOf('left') > -1;
 
-      // make sure forcePositions override other positionings
+      // make sure forcePositions override other positions
       if (forcePosition.length > 0) {
         showAbove = !(
           forcePosition === 'right' ||
@@ -176,15 +176,11 @@ export class Tooltip extends React.Component {
 
     return (
       <div
-        className={`tooltip ${this.state.direction} ${isVisible} content-type-${
-          this.props.contentType
-          }`}
+        className={`tooltip ${this.state.direction} ${isVisible} content-type-${this.props.contentType}`}
         style={style}
         onClick={this.props.onClick}>
         <div
-          className={`tooltip-content-container content-type-${
-            this.props.contentType
-            }`}>
+          className={`tooltip-content-container content-type-${this.props.contentType}`}>
           <div className="tooltip-content">{this.props.children}</div>
         </div>
         <svg

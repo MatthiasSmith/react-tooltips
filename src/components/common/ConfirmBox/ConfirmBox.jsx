@@ -9,11 +9,9 @@ const marginLeftStyle = {
   marginLeft: 15
 };
 
-export const ConfirmBox = function() {
-  return (
-    <div className="confirm-box" style={styles}>
-      <Button class="button-primary" text="Confirm" />
-      <Button class="button-danger" text="Cancel" style={marginLeftStyle} />
-    </div>
-  );
-};
+export const ConfirmBox = () => (
+  <div className="confirm-box" style={styles}>
+    <Button className="button-primary" text="Confirm" />
+    <Button className="button-danger" text="Cancel" style={marginLeftStyle} />
+  </div>
+);

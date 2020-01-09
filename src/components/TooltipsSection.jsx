@@ -2,60 +2,52 @@ import React from 'react';
 
 import { TooltipButton } from './common/TooltipButton/TooltipButton';
 
-export const TooltipsSection = ({ sectionTitle, subTitle, contentType, showOn, children }) => (
+export const TooltipsSection = ({ sectionTitle, subTitle, children, ...otherProps }) => (
   <section className="tooltips-container">
     <h3 className="section-header">{sectionTitle}</h3>
     <p className="sub-header-text">{subTitle}</p>
     <div className="flex-row space-between">
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="top-right">
         {children}
       </TooltipButton>
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="top-center">
         {children}
       </TooltipButton>
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="top-left">
         {children}
       </TooltipButton>
     </div>
     <div className="flex-row space-between">
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="left">
         {children}
       </TooltipButton>
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="right">
         {children}
       </TooltipButton>
     </div>
     <div className="flex-row space-between">
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="bottom-right">
         {children}
       </TooltipButton>
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="bottom-center">
         {children}
       </TooltipButton>
       <TooltipButton
-        showOn={showOn}
-        contentType={contentType}
+        {...otherProps}
         forcePosition="bottom-left">
         {children}
       </TooltipButton>
