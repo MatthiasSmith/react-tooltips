@@ -18,7 +18,7 @@ class App extends React.Component {
           contentType="text"
           showOn="hover"
           sectionTitle="Text Tooltips"
-          subTitle="(statically posititoned)">
+          subTitle="Hover or click the buttons to show the tooltip. (statically positioned)">
           <LoremIpsumText />
         </TooltipsSection>
         <hr />
@@ -26,7 +26,7 @@ class App extends React.Component {
           contentType="custom"
           showOn="click"
           sectionTitle="Action Box Tooltips"
-          subTitle="(statically posititoned)">
+          subTitle="(statically positioned)">
           <ActionsBox />
         </TooltipsSection>
         <hr />
@@ -34,7 +34,7 @@ class App extends React.Component {
           contentType="custom"
           showOn="click"
           sectionTitle="Confirm Box Tooltips"
-          subTitle="(statically posititoned)">
+          subTitle="(statically positioned)">
           <ConfirmBox />
         </TooltipsSection>
       </div>

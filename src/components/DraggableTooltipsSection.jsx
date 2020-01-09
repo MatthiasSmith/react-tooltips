@@ -13,17 +13,17 @@ export const DraggableTooltipsSection = () => {
       <h3 className="section-header">Dynamically Positioned Tooltips</h3>
       <p className="sub-header-text">
         These tooltips change position based on available space. <br />
-        Try dragging the buttons to the top, bottom, or sides of the screen to see the tooltips reposition.
+        Try dragging the buttons to the edges of the screen to see the tooltips reposition.
       </p>
       <div className="flex-row space-between">
-        <Draggable handle="div.tooltip-button" >
+        <Draggable handle="div.tooltip-button">
           <div>
             <TooltipButton showOn="click" buttonText="Text (Drag me)" detach="true">
               <LoremIpsumText />
             </TooltipButton>
           </div>
         </Draggable>
-        <Draggable>
+        <Draggable handle="div.tooltip-button">
           <div>
             <TooltipButton
               detach="true"
@@ -34,7 +34,7 @@ export const DraggableTooltipsSection = () => {
             </TooltipButton>
           </div>
         </Draggable>
-        <Draggable>
+        <Draggable handle="div.tooltip-button">
           <div>
             <TooltipButton
               detach="true"
