@@ -9,46 +9,46 @@ export const TooltipsSection = ({ sectionTitle, subTitle, children, ...otherProp
     <div className="flex-row space-between">
       <TooltipButton
         {...otherProps}
-        forcePosition="top-right">
+        staticPosition="top-right">
         {children}
       </TooltipButton>
       <TooltipButton
         {...otherProps}
-        forcePosition="top-center">
+        staticPosition="top-center">
         {children}
       </TooltipButton>
       <TooltipButton
         {...otherProps}
-        forcePosition="top-left">
-        {children}
-      </TooltipButton>
-    </div>
-    <div className="flex-row space-between">
-      <TooltipButton
-        {...otherProps}
-        forcePosition="left">
-        {children}
-      </TooltipButton>
-      <TooltipButton
-        {...otherProps}
-        forcePosition="right">
+        staticPosition="top-left">
         {children}
       </TooltipButton>
     </div>
     <div className="flex-row space-between">
       <TooltipButton
         {...otherProps}
-        forcePosition="bottom-right">
+        staticPosition="left">
         {children}
       </TooltipButton>
       <TooltipButton
         {...otherProps}
-        forcePosition="bottom-center">
+        staticPosition="right">
+        {children}
+      </TooltipButton>
+    </div>
+    <div className="flex-row space-between">
+      <TooltipButton
+        {...otherProps}
+        staticPosition="bottom-right">
         {children}
       </TooltipButton>
       <TooltipButton
         {...otherProps}
-        forcePosition="bottom-left">
+        staticPosition="bottom-center">
+        {children}
+      </TooltipButton>
+      <TooltipButton
+        {...otherProps}
+        staticPosition="bottom-left">
         {children}
       </TooltipButton>
     </div>

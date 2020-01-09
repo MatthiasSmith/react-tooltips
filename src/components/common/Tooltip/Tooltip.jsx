@@ -14,12 +14,12 @@ export class Tooltip extends React.Component {
     arrowPosition: 'center'
   };
 
-  setArrowPosition(forcePosition) {
-    if (forcePosition.indexOf('left') > -1) {
+  setArrowPosition(staticPosition) {
+    if (staticPosition.indexOf('left') > -1) {
       return 'left';
-    } else if (forcePosition.indexOf('center') > -1) {
+    } else if (staticPosition.indexOf('center') > -1) {
       return 'center';
-    } else if (forcePosition.indexOf('right') > -1) {
+    } else if (staticPosition.indexOf('right') > -1) {
       return 'right';
     } else {
       return '';
@@ -65,32 +65,32 @@ export class Tooltip extends React.Component {
 
       const tooltipRect = tooltipNode.getBoundingClientRect();
 
-      const forcePosition = this.props.forcePosition || '';
+      const staticPosition = this.props.staticPosition || '';
       let showAbove =
         (topY - tooltipRect.height >= 0
           && leftX >= 0
           && rightX <= docWidth)
-        || forcePosition.indexOf('top') > -1;
+        || staticPosition.indexOf('top') > -1;
       let showBelow =
         (bottomY + tooltipRect.height <= window.scrollY + docHeight
           && leftX >= 0
           && rightX <= docWidth)
-        || forcePosition.indexOf('bottom') > -1;
+        || staticPosition.indexOf('bottom') > -1;
 
       let showRight =
         rightX + tooltipRect.width <= window.scrollX + docWidth ||
-        forcePosition.indexOf('right') > -1;
+        staticPosition.indexOf('right') > -1;
       const showLeft =
-        leftX - tooltipRect.width >= 0 || forcePosition.indexOf('left') > -1;
+        leftX - tooltipRect.width >= 0 || staticPosition.indexOf('left') > -1;
 
-      // make sure forcePositions override other positions
-      if (forcePosition.length > 0) {
+      // make sure staticPositions props override other positions
+      if (staticPosition.length > 0) {
         showAbove = !(
-          forcePosition === 'right' ||
-          (forcePosition === 'left' || forcePosition.indexOf('bottom') > -1)
+          staticPosition === 'right' ||
+          (staticPosition === 'left' || staticPosition.indexOf('bottom') > -1)
         );
-        showBelow = !(forcePosition === 'right' || forcePosition === 'left');
-        showRight = !(forcePosition === 'left');
+        showBelow = !(staticPosition === 'right' || staticPosition === 'left');
+        showRight = !(staticPosition === 'left');
       }
 
       let newState = {};
@@ -109,7 +109,7 @@ export class Tooltip extends React.Component {
         }
 
         newState.arrowPosition =
-          this.setArrowPosition(forcePosition) || newState.arrowPosition;
+          this.setArrowPosition(staticPosition) || newState.arrowPosition;
 
         if (newState.arrowPosition === 'left') {
           x = leftX;
@@ -132,7 +132,7 @@ export class Tooltip extends React.Component {
         }
 
         newState.arrowPosition =
-          this.setArrowPosition(forcePosition) || newState.arrowPosition;
+          this.setArrowPosition(staticPosition) || newState.arrowPosition;
 
         if (newState.arrowPosition === 'left') {
           x = leftX;

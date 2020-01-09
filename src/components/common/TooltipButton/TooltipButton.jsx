@@ -86,7 +86,7 @@ export class TooltipButton extends React.Component {
           ref={this.tooltip}
           showOn={this.props.showOn}
           contentType={this.props.contentType}
-          forcePosition={this.props.forcePosition}
+          staticPosition={this.props.staticPosition}
           detach={this.props.detach}
         >
           {this.props.children}
